@@ -14,3 +14,8 @@
 [Udemy](https://www.udemy.com/course/the-ultimate-60-hours-ios-development-bootcamp/learn/lecture/45848019#overview)
 
 ## Index
+### SwiftUI
+- [Getting Started](Notes/Week1/Section9.md)
+- [Building List and Navigation](Notes/Week1/Section10.md)
+- [Understanding State and Binding](Notes/Week1/Section11.md)
+- [Implementing Weather App Using Web API and MV Pattern](Notes/Week1/Section12.md)
