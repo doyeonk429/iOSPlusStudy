@@ -200,3 +200,38 @@ struct HikeDetailScreen: View {
 - `withAnimation`은 애니메이션을 적용하여 상태 변화를 부드럽게 나타냄
 - `zoomed.toggle()`은 `zoomed` 값의 true/false를 반전.
 - 이 변경에 따라 이미지의 `aspectRatio`가 `.fill`과 `.fit` 사이에서 전환되며, 이 과정이 애니메이션으로 표현됨
+
+### 삼항 연산자 대신에 if-else문 사용한 코드
+```swift
+struct HikeDetailScreen: View {
+    
+    let hike: Hike
+    @State private var zoomed: Bool = false
+    
+    var body: some View {
+        VStack {
+            Image(hike.photo)
+                .resizable()
+                .aspectRatio(contentMode: {
+                    if zoomed {
+                        return .fill
+                    } else {
+                        return .fit
+                    }
+                }())
+                .onTapGesture {
+                    withAnimation {
+                        zoomed.toggle()
+                    }
+                }
+            Text(hike.name)
+                .font(.title)
+            Text("\(hike.miles.formatted()) miles")
+            Spacer()
+        }
+        .navigationTitle(hike.name)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+```
