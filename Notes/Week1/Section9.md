@@ -101,6 +101,14 @@ body property에 대한 associated type을 나타내야하는데, some View 구�
 
 ### Stack
 
+Vstack : 세로로 쌓는 스택
+
+Hstack : 가로로 쌓는 스택
+
+### Modifier
+
+- 가장 가까운 Modifier부터 적용됨. View Protocol 공용 modifier 넣기 전에 각 View의 modifier을 먼저 넣어줘야 원하는 대로 나옴
+
 ## Image 다루기
 
 ```swift
@@ -157,6 +165,19 @@ struct ContentView: View {
 
 ### Image
 
+- `.resizable()` : 해상도가 화면을 초과하는 경우에 이미지 크기 재조정 가능하게 만듦
+- `.edgesIgnoringSafeArea(.all)` : 이미지가 SafeArea를 무시하고 들어갈 수 있게 해줌
+- `.aspectRatio(contentMode: .fit)`: 비율 유지하면서 크기 맞추기(= `.scaledToFit()`)
+    - `.aspectRatio(contentMode: .fit)` == `scaledToFit()` ⇒ 이미지의 비율을 유지 + 이미지의 전체를 보여준다.
+    - `.aspectRatio(contentMode: .fill)` ⇒ 이미지의 비율을 유지 + 이미지가 잘리더라도 꽉채움
+- `.clipShape()` : circle, eclipse, RoundedRectangle 등 이미지를 도형에 맞게 자를 수 있음
+
 ### AsyncImage
+
+`AsyncImage` : URL을 통해 다운로드하지 않고 바로 이미지를 불러옴
+
+`placeholder` : 이미지를 비동기적으로 로드하는 동안 **대체 UI**를 제공하는 역할
+
+- `ProgressView()`는 이미지가 로드될 때까지 로딩 상태를 표시하는 placeholder로 사용
 
 ![스크린샷 2024-09-21 오후 8.56.07.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/8c944a44-a786-489e-91b1-902da81aa426/45e4af4e-f281-450f-aeac-7ec7efa83fcb/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-09-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.56.07.png)
